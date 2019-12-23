@@ -32,6 +32,7 @@
     "dotenv": "^8.2.0",
     "mongoose": "^5.8.2",
     "mongoose-unique-validator": "^2.0.3",
+    "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
     "reflect-metadata": "^0.1.12",
     "rimraf": "^2.6.2",

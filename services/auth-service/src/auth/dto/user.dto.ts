@@ -4,12 +4,17 @@ import {
     IsEmail, Length,
 } from 'class-validator';
 
-export class LoginDto {
+export class UserDto {
     @IsEmail()
     @IsNotEmpty()
     readonly email: string;
+
     @IsNotEmpty()
     @IsString()
     @Length(8)
     readonly password: string;
+
+    @IsString()
+    @Length(8)
+    readonly ip: string;
 }

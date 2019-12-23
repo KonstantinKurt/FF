@@ -18,6 +18,7 @@ export const UserSchema = new mongoose.Schema({
     },
     ip: {
         type: Array,
+        default: [],
     },
     profile: {
       type: String,

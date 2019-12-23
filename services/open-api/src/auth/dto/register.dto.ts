@@ -5,7 +5,7 @@ import {
     IsEmail,
 } from 'class-validator';
 
-export class LoginDto {
+export class RegisterDto {
     @ApiModelProperty()
     @IsEmail()
     @IsNotEmpty()
@@ -19,6 +19,15 @@ export class LoginDto {
     @IsNotEmpty()
     @IsString()
     readonly password: string;
+
+    @ApiModelProperty(
+        {
+            minLength: 2,
+        },
+    )
+    @IsNotEmpty()
+    @IsString()
+    readonly name: string;
 
     @IsString()
     ip: string = "";
