@@ -1,0 +1,29 @@
+.navbar {
+  min-height: 80px;
+  border: solid black 2px;
+  align-items: center;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  div {
+    width: 40%;
+    height: 80px;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  img{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+  }
+}
+
+button {
+  width: 30%;
+  height: 50%;
+  margin: 1%;
+}

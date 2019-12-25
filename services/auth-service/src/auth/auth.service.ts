@@ -10,8 +10,8 @@ import {Model} from 'mongoose';
 import {User} from "./interface/user.interface";
 import {JwtService} from "@nestjs/jwt";
 import * as bcrypt from 'bcrypt';
-import {JwtPayload} from "./interface/jwt_payload.interface";
-import {checkIpInDB} from "./helper/check_ip.helper";
+import {JwtPayload} from "./interface/jwt-payload.interface";
+import {checkIpInDB} from "./helper/check-ip.helper";
 
 
 @Injectable()
@@ -30,7 +30,7 @@ export class AuthService {
                if (comparePassword) {
                    if (!checkIpInDB(user, loginData.ip)) {
                        // const cryptIp = getHash(15);
-                       // const link = `${process.env.DEV_APP_URL}/auth/ip/${cryptIp}`;
+                       // const link = `${process.env.DEV_APP_URL}/Auth/ip/${cryptIp}`;
                        // const newIpUrl = await this.ipUrlRepository.create({hash: cryptIp, user, ip});
                        // newIpUrl.save();
                        // await this.mailerService.sendMail(getNewIpLetter(user, ip, agent, device, link))

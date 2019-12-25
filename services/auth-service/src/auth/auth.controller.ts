@@ -3,7 +3,7 @@ import {MessagePattern} from "@nestjs/microservices";
 import {AuthService} from "./auth.service";
 import {UserDto} from "./dto/user.dto";
 import {Observable} from "rxjs";
-import {JwtPayload} from "./interface/jwt_payload.interface";
+import {JwtPayload} from "./interface/jwt-payload.interface";
 
 @Controller()
 export class AuthController {

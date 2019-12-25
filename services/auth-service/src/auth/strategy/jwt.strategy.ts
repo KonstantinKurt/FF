@@ -4,7 +4,7 @@ import {
 } from '@nestjs/common';
 import {PassportStrategy} from '@nestjs/passport';
 import {Strategy, ExtractJwt} from 'passport-jwt';
-import {JwtPayload} from '../interface/jwt_payload.interface';
+import {JwtPayload} from '../interface/jwt-payload.interface';
 import {InjectModel} from '@nestjs/mongoose';
 import {User} from '../interface/user.interface';
 import {Model} from 'mongoose';
