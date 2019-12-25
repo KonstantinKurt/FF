@@ -2,6 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="32c2b046-a7f0-4f38-9b4d-59e914d239e9" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/FF.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/services/auth-service/config/ms_config.config.ts" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/services/auth-service/src/auth/helper/check_ip.helper.ts" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/services/auth-service/src/auth/interface/jwt_payload.interface.ts" afterDir="false" />
@@ -13,14 +18,7 @@
       <change afterPath="$PROJECT_DIR$/services/open-api/src/auth/dto/register.dto.ts" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/services/open-api/src/config/auth_ms_client.config.ts" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/services/open-api/src/config/swagger.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/auth-service/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/services/auth-service/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/auth-service/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/services/auth-service/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/auth-service/src/auth/dto/login.dto.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/open-api/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/services/open-api/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/open-api/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/services/open-api/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/open-api/src/auth/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/services/open-api/src/auth/auth.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/open-api/src/auth/dto/login.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/services/open-api/src/auth/dto/login.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/open-api/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/services/open-api/src/main.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -38,8 +36,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/services/open-api/src/auth/auth.controller.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="24" column="33" selection-start-line="24" selection-start-column="33" selection-end-line="24" selection-end-column="33" />
+            <state relative-caret-position="390">
+              <caret line="26" selection-start-line="26" selection-end-line="26" />
+              <folding>
+                <element signature="e#0#84#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -117,27 +118,6 @@
             </path>
             <path>
               <item name="FF" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FF" type="462c0819:PsiDirectoryNode" />
-              <item name="services" type="462c0819:PsiDirectoryNode" />
-              <item name="open-api" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FF" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FF" type="462c0819:PsiDirectoryNode" />
-              <item name="services" type="462c0819:PsiDirectoryNode" />
-              <item name="open-api" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FF" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FF" type="462c0819:PsiDirectoryNode" />
-              <item name="services" type="462c0819:PsiDirectoryNode" />
-              <item name="open-api" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="auth" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FF" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="bcb0276e:PhpExternalLibrariesNodePatcher$PatchedExternalLibrariesNode" />
             </path>
           </expand>
@@ -149,11 +129,15 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/services/auth-service/src/auth" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="ts.external.directory.path" value="$PROJECT_DIR$/services/auth-service/node_modules/typescript/lib" />
+    <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/services/auth-service/node_modules/prettier" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/services/open-api/node_modules/typescript/lib" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -185,18 +169,18 @@
       <workItem from="1576851362049" duration="637000" />
       <workItem from="1576852040667" duration="2529000" />
       <workItem from="1577090154280" duration="2232000" />
-      <workItem from="1577093786498" duration="17209000" />
+      <workItem from="1577093786498" duration="17566000" />
+      <workItem from="1577258175271" duration="1047000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22607000" />
+    <option name="totallyTimeSpent" value="24011000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1987" y="25" width="1853" height="1055" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.257886" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26065302" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -210,7 +194,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="GraphQL" order="9" />
       <window_info anchor="bottom" id="Database Changes" order="10" />
-      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.33045357" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.33045357" />
       <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
       <window_info anchor="bottom" id="TypeScript" order="13" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -530,8 +514,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/services/open-api/src/auth/auth.controller.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="24" column="33" selection-start-line="24" selection-start-column="33" selection-end-line="24" selection-end-column="33" />
+        <state relative-caret-position="390">
+          <caret line="26" selection-start-line="26" selection-end-line="26" />
+          <folding>
+            <element signature="e#0#84#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
