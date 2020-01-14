@@ -1,21 +1,24 @@
 <app-auth-navbar></app-auth-navbar>
-<form>
+<form [formGroup]="registerForm" (ngSubmit)="submit()">
   <h1>Register</h1>
-  <div class="input-container">
+  <div [ngClass]="registerForm.get('name').invalid && registerForm.get('name').touched ?
+       'input-container-error': 'input-container'">
     <label for="name" style="margin-right: auto">Name</label>
-    <input id="name" type="text" placeholder="input your name">
+    <input id="name" type="text" placeholder="input your name" formControlName="name">
+    <strong class="error-notification" *ngIf="registerForm.get('name').errors.required && registerForm.get('name').touched">Required field</strong>
+    <strong class="error-notification" *ngIf="registerForm.get('name').errors.minLength && registerForm.get('name').touched">Field must contain at least 2 symbols</strong>
   </div>
   <div class="input-container">
     <label for="email" style="margin-right: auto">Email</label>
-    <input id="email" type="text" placeholder="input your email">
+    <input id="email" type="text" placeholder="input your email" formControlName="email">
   </div>
   <div class="input-container">
     <label for="password" style="margin-right: auto">Password</label>
-    <input id="password" type="password" placeholder="input your password">
+    <input id="password" type="password" placeholder="input your password" formControlName="password">
   </div>
   <div class="input-container">
     <label for="confirm_password" style="margin-right: auto">Confirm your password</label>
     <input id="confirm_password" type="password" placeholder="confirm your password">
   </div>
-  <button>Ok</button>
+  <button type="submit" [disabled]="registerForm.invalid">Ok</button>
 </form>

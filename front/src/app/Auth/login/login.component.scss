@@ -24,6 +24,27 @@ form{
   }
 }
 
+.input-container-error {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid red;
+  padding: 2px;
+  label{
+    margin:5px;
+    font-size: large;
+  }
+  input{
+    margin:5px;
+    min-height: 25px;
+    padding: 3px;
+  }
+}
+
+.error-notification{
+  color: red;
+  margin:5px auto 5px 5px;
+}
+
 button{
   margin: 5px;
   min-height: 25px;

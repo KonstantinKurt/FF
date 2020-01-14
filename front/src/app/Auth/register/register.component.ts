@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {UserRegisterModel} from '../models/user-register.model';
 
 @Component({
   selector: 'app-register',
@@ -9,10 +11,33 @@ import { Component, OnInit } from '@angular/core';
   ]
 })
 export class RegisterComponent implements OnInit {
+  private registerForm: FormGroup;
+  private userRegister: UserRegisterModel;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
+    this.registerForm = new FormGroup({
+      name: new FormControl('', [
+        Validators.required,
+        Validators.minLength(2),
+      ]),
+      email: new FormControl('', [
+        Validators.required,
+        Validators.email,
+      ]),
+      password: new FormControl('', [
+        Validators.required,
+        Validators.minLength(8),
+      ])
+    });
+  }
+
+  submit() {
+    if (this.registerForm.valid) {
+      console.log({...this.registerForm.value});
+    }
   }
 
 }
