@@ -27,16 +27,23 @@ export class RegisterComponent implements OnInit {
         Validators.required,
         Validators.email,
       ]),
-      password: new FormControl('', [
-        Validators.required,
-        Validators.minLength(8),
-      ])
+      password: new FormGroup({
+        pass: new FormControl('', [
+          Validators.required,
+          Validators.minLength(8)
+        ]),
+        passConfirm: new FormControl('', [
+          Validators.required,
+          Validators.minLength(8)
+        ]),
+      })
     });
   }
 
   submit() {
+    console.log('Registered form', this.registerForm)
     if (this.registerForm.valid) {
-      console.log({...this.registerForm.value});
+      // console.log({...this.registerForm.value});
     }
   }
 

@@ -3,11 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="32c2b046-a7f0-4f38-9b4d-59e914d239e9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/app/Auth/auth.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/Auth/auth.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/app/Auth/login/login.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/Auth/login/login.component.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/app/Auth/register/register.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/Auth/register/register.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/app/Auth/register/register.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/Auth/register/register.component.ts" afterDir="false" />
     </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -60,15 +59,15 @@
       <recent name="$PROJECT_DIR$/services/auth-service/src/auth" />
     </key>
   </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
+  <component name="RunDashboard">
+    <option name="ruleStates">
       <list>
-        <serviceView>
-          <treeState>
-            <expand />
-            <select />
-          </treeState>
-        </serviceView>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
       </list>
     </option>
   </component>
@@ -97,6 +96,7 @@
       <workItem from="1578500676543" duration="17000" />
       <workItem from="1578914983031" duration="4088000" />
       <workItem from="1578989967646" duration="248000" />
+      <workItem from="1579066886989" duration="4196000" />
     </task>
     <servers />
   </component>

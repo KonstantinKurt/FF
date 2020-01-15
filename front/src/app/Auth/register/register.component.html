@@ -1,24 +1,47 @@
 <app-auth-navbar></app-auth-navbar>
 <form [formGroup]="registerForm" (ngSubmit)="submit()">
   <h1>Register</h1>
-  <div [ngClass]="registerForm.get('name').invalid && registerForm.get('name').touched ?
-       'input-container-error': 'input-container'">
+  <div class="input-container">
     <label for="name" style="margin-right: auto">Name</label>
-    <input id="name" type="text" placeholder="input your name" formControlName="name">
-    <strong class="error-notification" *ngIf="registerForm.get('name').errors.required && registerForm.get('name').touched">Required field</strong>
-    <strong class="error-notification" *ngIf="registerForm.get('name').errors.minLength && registerForm.get('name').touched">Field must contain at least 2 symbols</strong>
+    <input id="name" type="text" [ngStyle]="registerForm.get('name').invalid && registerForm.get('name').touched ?
+    {'border': 'solid red 2px'} : {}"
+           placeholder="input your name" formControlName="name">
+    <strong class="error-notification"
+            *ngIf="registerForm.get('name').errors.required && registerForm.get('name').touched">
+      Required field</strong>
+    <strong class="error-notification"
+            *ngIf="registerForm.get('name').errors.minlength && registerForm.get('name').touched">
+      Field must contain at least {{registerForm.get('name').errors.minlength.requiredLength}} symbols</strong>
   </div>
   <div class="input-container">
     <label for="email" style="margin-right: auto">Email</label>
-    <input id="email" type="text" placeholder="input your email" formControlName="email">
+    <input id="email" type="text" [ngStyle]="registerForm.get('email').invalid && registerForm.get('email').touched ?
+    {'border': 'solid red 2px'} : {}"
+           placeholder="input your email" formControlName="email">
+    <strong class="error-notification"
+            *ngIf="registerForm.get('email').errors.required && registerForm.get('email').touched">Required
+      field</strong>
+    <strong class="error-notification"
+            *ngIf="registerForm.get('email').errors.email && registerForm.get('email').touched">Field must be a correct
+      email</strong>
   </div>
-  <div class="input-container">
-    <label for="password" style="margin-right: auto">Password</label>
-    <input id="password" type="password" placeholder="input your password" formControlName="password">
-  </div>
-  <div class="input-container">
-    <label for="confirm_password" style="margin-right: auto">Confirm your password</label>
-    <input id="confirm_password" type="password" placeholder="confirm your password">
+  <div formGroupName="password">
+    <div class="input-container">
+      <label for="password" style="margin-right: auto">Password</label>
+      <input id="password" type="password" [ngStyle]="registerForm.get('password').get('pass').invalid &&
+      registerForm.get('password').get('pass').touched ?
+    {'border': 'solid red 2px'} : {}"
+             placeholder="input your password" formControlName="pass">
+      <strong class="error-notification" *ngIf="registerForm.get('password').get('pass').errors.required &&
+      registerForm.get('password').get('pass').touched">Required field</strong>
+      <strong class="error-notification"
+              *ngIf="registerForm.get('password').get('pass').errors.minlength && registerForm.get('password').get('pass').touched">
+        Field must contain at least {{registerForm.get('password').get('pass').errors.minlength.requiredLength}} symbols</strong>
+    </div>
+    <div class="input-container">
+      <label for="confirm_password" style="margin-right: auto">Confirm your password</label>
+      <input id="confirm_password" type="password" placeholder="confirm your password" formControlName="passConfirm">
+    </div>
   </div>
   <button type="submit" [disabled]="registerForm.invalid">Ok</button>
 </form>
