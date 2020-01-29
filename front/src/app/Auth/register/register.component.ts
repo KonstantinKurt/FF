@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {UserRegisterModel} from '../models/user-register.model';
+import {confirmPasswordValidator} from '../../_validators/confirm-password.validator';
 
 @Component({
   selector: 'app-register',
@@ -11,40 +12,35 @@ import {UserRegisterModel} from '../models/user-register.model';
   ]
 })
 export class RegisterComponent implements OnInit {
-  private registerForm: FormGroup;
-  private userRegister: UserRegisterModel;
-
-  constructor() {
+  private form: FormGroup;
+  private user: UserRegisterModel;
+  constructor(private formBuilder: FormBuilder) {
   }
-
   ngOnInit() {
-    this.registerForm = new FormGroup({
-      name: new FormControl('', [
-        Validators.required,
-        Validators.minLength(2),
-      ]),
+    this.user = new UserRegisterModel();
+    this.form = this.formBuilder.group({
       email: new FormControl('', [
-        Validators.required,
         Validators.email,
+        Validators.required
       ]),
-      password: new FormGroup({
-        pass: new FormControl('', [
-          Validators.required,
-          Validators.minLength(8)
-        ]),
-        passConfirm: new FormControl('', [
-          Validators.required,
-          Validators.minLength(8)
-        ]),
-      })
+      password: new FormControl(null, [
+        Validators.required,
+        Validators.minLength(6)
+      ]),
+      confirmPassword: new FormControl(null, [
+        Validators.required,
+        confirmPasswordValidator('password')
+      ])
     });
   }
 
   submit() {
-    console.log('Registered form', this.registerForm)
-    if (this.registerForm.valid) {
-      // console.log({...this.registerForm.value});
+    if (this.form.valid) {
+      console.log('Form: ', this.form);
+      const formData = {...this.form.value};
+
+      console.log('Form Data:', formData);
     }
   }
-
 }
+

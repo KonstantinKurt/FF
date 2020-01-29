@@ -1,47 +1,39 @@
 <app-auth-navbar></app-auth-navbar>
-<form [formGroup]="registerForm" (ngSubmit)="submit()">
+<form [formGroup]="form" (ngSubmit)="submit()">
   <h1>Register</h1>
   <div class="input-container">
-    <label for="name" style="margin-right: auto">Name</label>
-    <input id="name" type="text" [ngStyle]="registerForm.get('name').invalid && registerForm.get('name').touched ?
-    {'border': 'solid red 2px'} : {}"
-           placeholder="input your name" formControlName="name">
-    <strong class="error-notification"
-            *ngIf="registerForm.get('name').errors.required && registerForm.get('name').touched">
-      Required field</strong>
-    <strong class="error-notification"
-            *ngIf="registerForm.get('name').errors.minlength && registerForm.get('name').touched">
-      Field must contain at least {{registerForm.get('name').errors.minlength.requiredLength}} symbols</strong>
+    <label>Email</label>
+    <input type="text" placeholder="Email" formControlName="email">
+    <div *ngIf="form.get('email').invalid && form.get('email').touched">
+      <strong class="error-notification" *ngIf="form.get('email').errors.required">Email can not be empty </strong>
+      <strong *ngIf="form.get('email').errors.email">Email is incorrect</strong>
+    </div>
   </div>
   <div class="input-container">
-    <label for="email" style="margin-right: auto">Email</label>
-    <input id="email" type="text" [ngStyle]="registerForm.get('email').invalid && registerForm.get('email').touched ?
-    {'border': 'solid red 2px'} : {}"
-           placeholder="input your email" formControlName="email">
-    <strong class="error-notification"
-            *ngIf="registerForm.get('email').errors.required && registerForm.get('email').touched">Required
-      field</strong>
-    <strong class="error-notification"
-            *ngIf="registerForm.get('email').errors.email && registerForm.get('email').touched">Field must be a correct
-      email</strong>
-  </div>
-  <div formGroupName="password">
-    <div class="input-container">
-      <label for="password" style="margin-right: auto">Password</label>
-      <input id="password" type="password" [ngStyle]="registerForm.get('password').get('pass').invalid &&
-      registerForm.get('password').get('pass').touched ?
-    {'border': 'solid red 2px'} : {}"
-             placeholder="input your password" formControlName="pass">
-      <strong class="error-notification" *ngIf="registerForm.get('password').get('pass').errors.required &&
-      registerForm.get('password').get('pass').touched">Required field</strong>
-      <strong class="error-notification"
-              *ngIf="registerForm.get('password').get('pass').errors.minlength && registerForm.get('password').get('pass').touched">
-        Field must contain at least {{registerForm.get('password').get('pass').errors.minlength.requiredLength}} symbols</strong>
-    </div>
-    <div class="input-container">
-      <label for="confirm_password" style="margin-right: auto">Confirm your password</label>
-      <input id="confirm_password" type="password" placeholder="confirm your password" formControlName="passConfirm">
+    <label>Password</label>
+    <input type="password" placeholder="Пароль" formControlName="password">
+    <div *ngIf="form.get('password').invalid && form.get('password').touched">
+      <small *ngIf="form.get('password').errors.required">
+        Password can not be empty
+      </small>
+      <small *ngIf="form.get('password').errors.minlength">
+        Length must be longer than {{form.get('password').errors.minlength.requiredLength}}.
+        No it is {{form.get('password').errors.minlength.actualLength}}
+      </small>
     </div>
   </div>
-  <button type="submit" [disabled]="registerForm.invalid">Ok</button>
+  <div class="input-container">
+    <label>Confirm password</label>
+    <input type="password" placeholder="Confirm your password" formControlName="confirmPassword">
+    <div *ngIf="form.get('confirmPassword').invalid && form.get('confirmPassword').touched"
+      class="validation">
+      <small *ngIf="form.get('confirmPassword').errors.required">
+        Confirm password can not be empty
+      </small>
+      <small *ngIf="form.get('confirmPassword').errors.notMatch">
+        Passwords must match
+      </small>
+    </div>
+  </div>
+  <button class="btn" type="submit" [disabled]="form.invalid">Ok</button>
 </form>
