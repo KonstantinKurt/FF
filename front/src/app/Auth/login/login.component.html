@@ -1,13 +1,26 @@
 <app-auth-navbar></app-auth-navbar>
-<form>
-    <h1>Login</h1>
-    <div class="input-container">
-        <label for="email" style="margin-right: auto">Email</label>
-        <input id="email" type="text" placeholder="input your email">
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <h1>Login</h1>
+  <div class="input-container">
+    <label for="email" style="margin-right: auto">Email</label>
+    <input id="email" type="text" placeholder="input your email" formControlName="email">
+    <div *ngIf="form.get('email').invalid && form.get('email').touched">
+      <strong class="error-notification" *ngIf="form.get('email').errors.required">Email can not be empty </strong>
+      <strong *ngIf="form.get('email').errors.email">Email is incorrect</strong>
     </div>
-    <div class="input-container">
-        <label for="password" style="margin-right: auto">Password</label>
-        <input id="password" type="password" placeholder="input your password">
+  </div>
+  <div class="input-container">
+    <label for="password" style="margin-right: auto">Password</label>
+    <input id="password" type="password" placeholder="input your password" formControlName="password">
+    <div *ngIf="form.get('password').invalid && form.get('password').touched">
+      <strong *ngIf="form.get('password').errors.required">
+        Password can not be empty
+      </strong>
+      <strong *ngIf="form.get('password').errors.minlength">
+        Length must be longer than {{form.get('password').errors.minlength.requiredLength}}.
+        No it is {{form.get('password').errors.minlength.actualLength}}
+      </strong>
     </div>
-    <button>Ok</button>
+  </div>
+  <button class="btn" type="submit" [disabled]="form.invalid">Ok</button>
 </form>

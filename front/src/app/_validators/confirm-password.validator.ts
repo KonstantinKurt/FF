@@ -16,7 +16,7 @@ export function confirmPasswordValidator(confirmPasswordInput: string) {
       });
     }
     if (
-      passwordControl.value !== confirmPasswordControl.value || !confirmPasswordControl.value
+      passwordControl.value !== confirmPasswordControl.value
     ) {
       return {
         notMatch: true

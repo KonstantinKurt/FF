@@ -11,15 +11,15 @@
   </div>
   <div class="input-container">
     <label>Password</label>
-    <input type="password" placeholder="Пароль" formControlName="password">
+    <input type="password" placeholder="Password" formControlName="password">
     <div *ngIf="form.get('password').invalid && form.get('password').touched">
-      <small *ngIf="form.get('password').errors.required">
+      <strong *ngIf="form.get('password').errors.required">
         Password can not be empty
-      </small>
-      <small *ngIf="form.get('password').errors.minlength">
+      </strong>
+      <strong *ngIf="form.get('password').errors.minlength">
         Length must be longer than {{form.get('password').errors.minlength.requiredLength}}.
         No it is {{form.get('password').errors.minlength.actualLength}}
-      </small>
+      </strong>
     </div>
   </div>
   <div class="input-container">
@@ -27,12 +27,9 @@
     <input type="password" placeholder="Confirm your password" formControlName="confirmPassword">
     <div *ngIf="form.get('confirmPassword').invalid && form.get('confirmPassword').touched"
       class="validation">
-      <small *ngIf="form.get('confirmPassword').errors.required">
-        Confirm password can not be empty
-      </small>
-      <small *ngIf="form.get('confirmPassword').errors.notMatch">
+      <strong *ngIf="form.get('confirmPassword').errors.notMatch">
         Passwords must match
-      </small>
+      </strong>
     </div>
   </div>
   <button class="btn" type="submit" [disabled]="form.invalid">Ok</button>

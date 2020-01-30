@@ -14,8 +14,10 @@ import {confirmPasswordValidator} from '../../_validators/confirm-password.valid
 export class RegisterComponent implements OnInit {
   private form: FormGroup;
   private user: UserRegisterModel;
+
   constructor(private formBuilder: FormBuilder) {
   }
+
   ngOnInit() {
     this.user = new UserRegisterModel();
     this.form = this.formBuilder.group({
@@ -36,10 +38,8 @@ export class RegisterComponent implements OnInit {
 
   submit() {
     if (this.form.valid) {
-      console.log('Form: ', this.form);
       const formData = {...this.form.value};
-
-      console.log('Form Data:', formData);
+      console.log('Form data', formData);
     }
   }
 }
