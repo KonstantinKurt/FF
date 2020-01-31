@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {UserRegisterModel} from '../models/user-register.model';
-import {confirmPasswordValidator} from '../../_validators/confirm-password.validator';
+import {CustomValidator} from '../../shared/custom-validator.validator';
 
 @Component({
   selector: 'app-register',
@@ -21,19 +21,20 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
     this.user = new UserRegisterModel();
     this.form = this.formBuilder.group({
-      email: new FormControl('', [
-        Validators.email,
-        Validators.required
-      ]),
-      password: new FormControl(null, [
-        Validators.required,
-        Validators.minLength(6)
-      ]),
-      confirmPassword: new FormControl(null, [
-        Validators.required,
-        confirmPasswordValidator('password')
-      ])
-    });
+        email: new FormControl('', [
+          Validators.email,
+          Validators.required
+        ]),
+        password: new FormControl(null, [
+          Validators.required,
+          Validators.minLength(6)
+        ]),
+        confirmPassword: new FormControl(null, [
+          Validators.required, ])
+      },
+      {
+        validator: [CustomValidator.passwordMatchValidator]
+      });
   }
 
   submit() {

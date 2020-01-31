@@ -30,5 +30,5 @@ export class RegisterDto {
     readonly name: string;
 
     @IsString()
-    ip: string = "";
+    ip: string = '';
 }

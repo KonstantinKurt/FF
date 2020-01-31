@@ -2,17 +2,16 @@ import {
     HttpException,
     Injectable,
     Logger,
-    NotFoundException, UnauthorizedException
+    NotFoundException, UnauthorizedException,
 } from '@nestjs/common';
-import {UserDto} from "./dto/user.dto";
-import {InjectModel} from "@nestjs/mongoose";
+import {UserDto} from './dto/user.dto';
+import {InjectModel} from '@nestjs/mongoose';
 import {Model} from 'mongoose';
-import {User} from "./interface/user.interface";
-import {JwtService} from "@nestjs/jwt";
+import {User} from './interface/user.interface';
+import {JwtService} from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
-import {JwtPayload} from "./interface/jwt-payload.interface";
-import {checkIpInDB} from "./helper/check-ip.helper";
-
+import {JwtPayload} from './interface/jwt-payload.interface';
+import {checkIpInDB} from './helper/check-ip.helper';
 
 @Injectable()
 export class AuthService {
@@ -20,12 +19,12 @@ export class AuthService {
     constructor(
         @InjectModel('User') private readonly userModel: Model<User>,
         private readonly jwtService: JwtService,
-    ){}
-    async login(loginData: UserDto): Promise<object>{
+    ) {}
+    async login(loginData: UserDto): Promise<object> {
         this.logger.log(loginData);
-        try{
+        try {
            const user = await this.userModel.findOne({email: loginData.email});
-           if(user){
+           if (user) {
                const comparePassword = bcrypt.compareSync(loginData.password, user.password);
                if (comparePassword) {
                    if (!checkIpInDB(user, loginData.ip)) {
@@ -54,22 +53,22 @@ export class AuthService {
                        message: `Wrong password`,
                    });
                }
-           }else{
+           } else {
                throw new NotFoundException({
-                   message: `User not found`
+                   message: `User not found`,
                });
            }
-        }catch(error){
+        } catch (error) {
             throw new HttpException({
                 error: error.message,
             }, 500);
         }
     }
 
-    async register(registerData: UserDto): Promise<object>{
+    async register(registerData: UserDto): Promise<object> {
         this.logger.log(registerData);
-        try{
-           const newUser =await new this.userModel({
+        try {
+           const newUser = await new this.userModel({
                email: registerData.email,
                password: registerData.password,
            });
@@ -77,8 +76,8 @@ export class AuthService {
            await newUser.save();
            return {
                id: newUser.id,
-           }
-        }catch(error){
+           };
+        } catch (error) {
             throw new HttpException({
                 error: error.message,
             }, 500);
