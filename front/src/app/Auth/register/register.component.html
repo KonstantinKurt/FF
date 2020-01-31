@@ -7,6 +7,7 @@
     <div *ngIf="form.get('email').invalid && form.get('email').touched">
       <strong class="error-notification" *ngIf="form.get('email').errors.required">Email can not be empty </strong>
       <strong *ngIf="form.get('email').errors.email">Email is incorrect</strong>
+      <strong *ngIf="form.get('email').errors.alreadyExists">Email already exists!</strong>
     </div>
   </div>
   <div class="input-container">

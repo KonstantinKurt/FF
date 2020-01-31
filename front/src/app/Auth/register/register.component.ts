@@ -33,7 +33,9 @@ export class RegisterComponent implements OnInit {
           Validators.required, ])
       },
       {
-        validator: [CustomValidator.passwordMatchValidator]
+        validator: [CustomValidator.passwordMatchValidator,
+          CustomValidator.emailUniqueValidator,
+        ]
       });
   }
 
