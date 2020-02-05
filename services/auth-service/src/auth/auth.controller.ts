@@ -1,9 +1,7 @@
 import {Controller, Logger} from '@nestjs/common';
-import {MessagePattern} from "@nestjs/microservices";
-import {AuthService} from "./auth.service";
-import {UserDto} from "./dto/user.dto";
-import {Observable} from "rxjs";
-import {JwtPayload} from "./interface/jwt-payload.interface";
+import {MessagePattern} from '@nestjs/microservices';
+import {AuthService} from './auth.service';
+import {UserDto} from './dto/user.dto';
 
 @Controller()
 export class AuthController {
@@ -20,5 +18,10 @@ export class AuthController {
     @MessagePattern('register')
     async register(registerData: UserDto): Promise<object> {
         return this.authService.register(registerData);
+    }
+
+    @MessagePattern('check_email')
+    async checkEmail(email: string): Promise<object> {
+        return this.authService.checkEmail(email);
     }
 }

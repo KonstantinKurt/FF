@@ -16,6 +16,8 @@ import {
 import {LoginDto} from './dto/login.dto';
 import {IpAddressCheck} from './decorators/check_ip.decorator';
 import {RegisterDto} from './dto/register.dto';
+import {CheckEmailDto} from './dto/check_email.dto';
+import {Observable} from 'rxjs';
 
 @ApiUseTags('Auth Controller')
 @Controller(process.env.OPEN_API_AUTH_URL)
@@ -28,7 +30,7 @@ export class AuthController {
     @Post('/login')
     @ApiOperation({title: 'login user'})
     @HttpCode(200)
-    async login(@Body() loginData: LoginDto,  @IpAddressCheck() ip: string) {
+    login(@Body() loginData: LoginDto,  @IpAddressCheck() ip: string) {
         this.logger.log(loginData);
         loginData.ip = ip;
         return this.authService.login(loginData);
@@ -37,9 +39,16 @@ export class AuthController {
     @Post('/register')
     @ApiOperation({title: 'register user'})
     @HttpCode(201)
-    async register(@Body() registerData: RegisterDto, @IpAddressCheck() ip: string) {
+    register(@Body() registerData: RegisterDto, @IpAddressCheck() ip: string) {
         registerData.ip = ip;
         return this.authService.register(registerData);
+    }
+
+    @Post('/check-email')
+    @ApiOperation({title: 'check email validator'})
+    @HttpCode(200)
+    async checkEmail(@Body() emailData: CheckEmailDto) {
+        return this.authService.checkEmail(emailData);
     }
 
 }

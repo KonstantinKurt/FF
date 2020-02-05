@@ -25,10 +25,6 @@ export class RegisterDto {
             minLength: 2,
         },
     )
-    @IsNotEmpty()
-    @IsString()
-    readonly name: string;
-
     @IsString()
     ip: string = '';
 }

@@ -1,4 +1,4 @@
-import {ClientOptions, Transport} from "@nestjs/microservices";
+import {ClientOptions, Transport} from '@nestjs/microservices';
 
 export const authClientOptions: ClientOptions = {
     transport: Transport.TCP,
@@ -7,5 +7,5 @@ export const authClientOptions: ClientOptions = {
         // port: +process.env.AUTH_SERVICE_PORT,
         host: '127.0.0.1',
         port: 7001,
-    }
+    },
 };

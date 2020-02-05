@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {CustomValidator} from './shared/custom-validator.validator';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'front';
+  constructor() {}
 }

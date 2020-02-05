@@ -3,10 +3,12 @@ import {ClientProxy, ClientProxyFactory} from '@nestjs/microservices';
 import {authClientOptions} from '../config/auth_ms_client.config';
 import {LoginDto} from './dto/login.dto';
 import {RegisterDto} from './dto/register.dto';
+import {CheckEmailDto} from './dto/check_email.dto';
 
 @Injectable()
 export class AuthService {
     private authClient: ClientProxy;
+    private logger = new Logger('Open Api');
 
     constructor() {
         this.authClient = ClientProxyFactory.create(authClientOptions);
@@ -18,5 +20,10 @@ export class AuthService {
 
     async register(registerData: RegisterDto) {
         return this.authClient.send('register', registerData);
+    }
+
+    async checkEmail(emailData: CheckEmailDto) {
+        this.logger.log(`Checking email: ${JSON.stringify(emailData)}`);
+        return this.authClient.send('check_email', emailData.email);
     }
 }
