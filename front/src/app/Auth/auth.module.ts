@@ -9,6 +9,7 @@ import {SuccessfulComponent} from './successful/successful.component';
 import {LoginService} from './login/login.service';
 import {RegisterService} from './register/register.service';
 import {AuthNavbarComponent} from './auth-navbar/auth-navbar.component';
+import {ConfirmEmailComponent} from './confirm-email/confirm-email.component';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import {AuthNavbarComponent} from './auth-navbar/auth-navbar.component';
     RegisterComponent,
     SuccessfulComponent,
     AuthNavbarComponent,
+    ConfirmEmailComponent
   ],
   imports: [
     CommonModule,

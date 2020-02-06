@@ -13,6 +13,7 @@ import {CustomValidator} from '../../shared/custom-validator.validator';
 import {RegisterService} from './register.service';
 import {Observable, of} from 'rxjs';
 import {debounceTime, map, switchMap, take} from 'rxjs/operators';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -28,29 +29,29 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private registerService: RegisterService
+    private registerService: RegisterService,
+    private router: Router,
   ) {
   }
 
   ngOnInit() {
-    this.user = new UserRegisterModel();
     this.form = this.formBuilder.group({
-        email: ['',
+        email: [null,
           [
             Validators.email,
             Validators.required
           ],
-          this.existingEmailValidator()
+          this.uniqueEmailValidator()
         ],
         password: [null,
           [
-          Validators.required,
-          Validators.minLength(6)
-        ]
+            Validators.required,
+            Validators.minLength(6)
+          ]
         ],
         confirmPassword: [null,
           [
-          Validators.required,
+            Validators.required,
           ]
         ]
       },
@@ -62,7 +63,7 @@ export class RegisterComponent implements OnInit {
       });
   }
 
-  existingEmailValidator(initialEmail: string = ''): AsyncValidatorFn {
+  uniqueEmailValidator(initialEmail: string = ''): AsyncValidatorFn {
     return (
       control: AbstractControl
     ):
@@ -90,28 +91,18 @@ export class RegisterComponent implements OnInit {
     };
   }
 
-  emailUniqueValidator() {
-    // const email: string = control.get('email').value;
-    // console.log('Email control:', email);
-    // let check: object;
-    // this.registerService.checkEmail(value)
-    //   .subscribe((response: any) => {
-    //     check = response.body.result;
-    //   });
-    // console.log(check);
-    // if (check) {
-    //   control.get('email').setErrors({alreadyExists: true});
-    // }
-    // const check = this.registerService.checkEmail(email).pipe(map((data) => {
-    //   console.log(data);
-    // }));
-    // return {alreadyExists: true};
-  }
-
-  submit() {
+  async submit() {
     if (this.form.valid) {
-      const formData = {...this.form.value};
-      console.log('Form data', formData);
+      this.user = new UserRegisterModel();
+      this.user.email = this.form.value.email;
+      this.user.password = this.form.value.password;
+      await this.registerService.register(this.user)
+        .subscribe((response: any) => {
+          if (response.status === 201) {
+            this.router.navigateByUrl('auth/confirm');
+          }
+          this.router.navigateByUrl('error');
+        });
     }
   }
 }

@@ -3,10 +3,12 @@ import {NgModule} from '@angular/core';
 import {ReactiveFormsModule} from '@angular/forms';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
+import { ErrorComponent } from './shared/error/error.component';
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+        ErrorComponent,
     ],
     imports: [
         BrowserModule,

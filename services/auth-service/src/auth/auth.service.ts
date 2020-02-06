@@ -89,7 +89,6 @@ export class AuthService {
     }
 
     async checkEmail(email: string): Promise<object> {
-        this.logger.log(`Checking email ${email}`);
         try {
             const check = await this.userModel.findOne({email}).exec();
             return {

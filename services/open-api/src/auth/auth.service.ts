@@ -19,6 +19,7 @@ export class AuthService {
     }
 
     async register(registerData: RegisterDto) {
+        this.logger.log(`Passing register data ${JSON.stringify(registerData)}`);
         return this.authClient.send('register', registerData);
     }
 

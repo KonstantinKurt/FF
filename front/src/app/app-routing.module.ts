@@ -1,5 +1,6 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {Routes, RouterModule} from '@angular/router';
+import {ErrorComponent} from './shared/error/error.component';
 
 
 const routes: Routes = [
@@ -12,10 +13,16 @@ const routes: Routes = [
     path: 'auth',
     loadChildren: './Auth/auth.module#AuthModule'
   },
+  {
+    path: 'error',
+    component: ErrorComponent
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}
+
