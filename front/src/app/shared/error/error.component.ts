@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Params} from '@angular/router';
 
 @Component({
   selector: 'app-error',
@@ -6,10 +7,34 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./error.component.scss']
 })
 export class ErrorComponent implements OnInit {
+  private title: string;
 
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute,
+  ) {
+    this.route.params.subscribe((param: Params) => {
+      this.setTitle(param.type);
+    });
+  }
 
   ngOnInit() {
+  }
+
+  private setTitle(type: string) {
+    switch (type) {
+      case '500': {
+        this.title = `Something went wrong`;
+        break;
+      }
+      case '404': {
+        this.title = `Not found`;
+        break;
+      }
+      default: {
+        this.title = `Something went wrong`;
+        break;
+      }
+    }
   }
 
 }

@@ -6,6 +6,7 @@ import {msOptions} from '../config/ms.config';
 
 async function bootstrap() {
   const app = await NestFactory.createMicroservice(AppModule, msOptions);
-  await app.listen(() => Logger.log(`Auth-service is listening on port ${process.env.PORT}`));
+  await app.listen(() => Logger.log(`Email-service is listening on port ${process.env.PORT}`));
 }
 bootstrap();
+

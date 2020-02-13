@@ -3,9 +3,7 @@ import {
   AbstractControl,
   AsyncValidatorFn,
   FormBuilder,
-  FormControl,
   FormGroup,
-  ValidationErrors,
   Validators
 } from '@angular/forms';
 import {UserRegisterModel} from '../models/user-register.model';
@@ -98,10 +96,7 @@ export class RegisterComponent implements OnInit {
       this.user.password = this.form.value.password;
       await this.registerService.register(this.user)
         .subscribe((response: any) => {
-          if (response.status === 201) {
-            this.router.navigateByUrl('auth/confirm');
-          }
-          this.router.navigateByUrl('error');
+          response.status === 201 ? this.router.navigateByUrl('auth/confirm') : this.router.navigateByUrl('error/500');
         });
     }
   }

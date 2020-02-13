@@ -14,8 +14,12 @@ const routes: Routes = [
     loadChildren: './Auth/auth.module#AuthModule'
   },
   {
-    path: 'error',
+    path: 'error/:type',
     component: ErrorComponent
+  },
+  {
+    path: '**',
+    redirectTo: 'error/404'
   }
 ];
 

@@ -4,24 +4,27 @@ import {
     Logger,
     NotFoundException, UnauthorizedException,
 } from '@nestjs/common';
-import {UserDto} from './dto/user.dto';
 import {InjectModel} from '@nestjs/mongoose';
 import {Model} from 'mongoose';
-import {User} from './interface/user.interface';
 import {JwtService} from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
+import {ClientProxy, ClientProxyFactory} from '@nestjs/microservices';
+import {User} from './interface/user.interface';
 import {JwtPayload} from './interface/jwt-payload.interface';
+import {UserDto} from './dto/user.dto';
 import {checkIpInDB} from './helper/check-ip.helper';
-import {Observable, of} from "rxjs";
+import {emailClientOptions} from '../../config/email_ms_client.config';
 
 @Injectable()
 export class AuthService {
     private logger = new Logger('Auth MS');
+    private emailClient: ClientProxy;
 
     constructor(
         @InjectModel('User') private readonly userModel: Model<User>,
         private readonly jwtService: JwtService,
     ) {
+        this.emailClient = ClientProxyFactory.create(emailClientOptions);
     }
 
     async login(loginData: UserDto): Promise<object> {
@@ -77,9 +80,11 @@ export class AuthService {
                 password: registerData.password,
             });
             await newUser.ip.push(registerData.ip);
-            await newUser.save();
+            const result = await newUser.save();
+            if (result) {
+            }
             return {
-                id: newUser.id,
+                id: result.id,
             };
         } catch (error) {
             throw new HttpException({
@@ -93,7 +98,7 @@ export class AuthService {
             const check = await this.userModel.findOne({email}).exec();
             return {
                 result: !!check,
-            }
+            };
         } catch (error) {
             throw new HttpException({
                 error: error.message,
