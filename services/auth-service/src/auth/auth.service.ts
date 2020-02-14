@@ -2,7 +2,7 @@ import {
     HttpException,
     Injectable,
     Logger,
-    NotFoundException, UnauthorizedException,
+    NotFoundException, OnApplicationBootstrap, UnauthorizedException,
 } from '@nestjs/common';
 import {InjectModel} from '@nestjs/mongoose';
 import {Model} from 'mongoose';
@@ -11,20 +11,30 @@ import * as bcrypt from 'bcrypt';
 import {ClientProxy, ClientProxyFactory} from '@nestjs/microservices';
 import {User} from './interface/user.interface';
 import {JwtPayload} from './interface/jwt-payload.interface';
+import {NotificationHash} from './interface/notification.interface';
 import {UserDto} from './dto/user.dto';
 import {checkIpInDB} from './helper/check-ip.helper';
 import {emailClientOptions} from '../../config/email_ms_client.config';
+import {getHash} from './helper/get-hash.helper';
+import {SendEmail} from './interface/send-email.interface';
+import {Observable} from "rxjs";
 
 @Injectable()
-export class AuthService {
+export class AuthService implements OnApplicationBootstrap {
     private logger = new Logger('Auth MS');
     private emailClient: ClientProxy;
+    private test = '';
 
     constructor(
         @InjectModel('User') private readonly userModel: Model<User>,
+        @InjectModel('NotificationHash') private readonly notificationModel: Model<NotificationHash>,
         private readonly jwtService: JwtService,
     ) {
         this.emailClient = ClientProxyFactory.create(emailClientOptions);
+    }
+
+    async onApplicationBootstrap() {
+        await this.emailClient.connect();
     }
 
     async login(loginData: UserDto): Promise<object> {
@@ -47,7 +57,7 @@ export class AuthService {
                     }
                     const payload: JwtPayload = {
                         id: user.id,
-                        login: user.login,
+                        email: user.email,
                         expires_in: process.env.AUTH_TOKEN_EXPIRES_IN,
                     };
                     const accessToken = await this.jwtService.sign(payload);
@@ -80,12 +90,18 @@ export class AuthService {
                 password: registerData.password,
             });
             await newUser.ip.push(registerData.ip);
-            const result = await newUser.save();
-            if (result) {
-            }
-            return {
-                id: result.id,
+            await newUser.save();
+            const confirmNotificationHash = await new this.notificationModel({
+                hash: getHash(15),
+                email: newUser.email,
+                event: 'confirm email',
+            });
+            confirmNotificationHash.save();
+            const sendEmailData: SendEmail = {
+                email: newUser.email,
+                hash: confirmNotificationHash.hash,
             };
+            return this.sendEmail('confirm_email', sendEmailData);
         } catch (error) {
             throw new HttpException({
                 error: error.message,
@@ -104,5 +120,9 @@ export class AuthService {
                 error: error.message,
             }, 500);
         }
+    }
+
+    sendEmail(pattern: string, data: SendEmail): Observable<object> {
+        return this.emailClient.send(pattern, data);
     }
 }

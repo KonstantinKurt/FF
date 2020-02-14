@@ -1,11 +1,11 @@
 import {Module} from '@nestjs/common';
 import {AuthController} from './auth.controller';
 import {AuthService} from './auth.service';
-import {MongooseModule} from "@nestjs/mongoose";
-import {UserSchema} from "./schema/user.schema";
+import {MongooseModule} from '@nestjs/mongoose';
+import {UserSchema} from './schema/user.schema';
 import {JwtModule} from '@nestjs/jwt';
 import {PassportModule} from '@nestjs/passport';
-
+import {NotificationHashSchema} from './schema/notification.schema';
 
 @Module({
     imports: [
@@ -13,6 +13,10 @@ import {PassportModule} from '@nestjs/passport';
                 {
                     name: 'User',
                     schema: UserSchema,
+                },
+                {
+                    name: 'NotificationHash',
+                    schema: NotificationHashSchema,
                 },
             ],
         ),
@@ -27,7 +31,7 @@ import {PassportModule} from '@nestjs/passport';
         }),
     ],
     controllers: [AuthController],
-    providers: [AuthService]
+    providers: [AuthService],
 })
 export class AuthModule {
 }

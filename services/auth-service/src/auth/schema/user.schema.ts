@@ -20,6 +20,10 @@ export const UserSchema = new mongoose.Schema({
         type: Array,
         default: [],
     },
+    confirmed: {
+        type: Boolean,
+        default: false,
+    },
     profile: {
       type: String,
     },
